@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Phupho 💖</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            background: #000;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Card Design */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: none;
+            animation: cardPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .card.active {
+            display: block;
+        }
+
+        @keyframes cardPop {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Card Glow Effect */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        /* Typography */
+        .card-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-image {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: imagePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes imagePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            }
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Interactive Button */
+        .btn-interactive {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-interactive::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-interactive:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-interactive:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-interactive:active {
+            transform: translateY(0);
+        }
+
+        /* Love Letter Style */
+        .letter-container {
+            background: #fff9e6;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+            margin: 20px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .letter-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .letter-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .letter-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+        }
+
+        .letter-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #444;
+            text-align: left;
+        }
+
+        .signature {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5rem;
+            color: #667eea;
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        /* Memory Grid */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .memory-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .memory-item:hover::before {
+            left: 100%;
+        }
+
+        .memory-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .memory-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .memory-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Quiz Style */
+        .quiz-option {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .quiz-option:hover {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            transform: translateX(10px);
+        }
+
+        .quiz-option.correct {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+            animation: correctAnswer 0.5s ease;
+        }
+
+        @keyframes correctAnswer {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Final Reveal */
+        .final-reveal {
+            text-align: center;
+        }
+
+        .final-image {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 20px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: revealImage 1s ease;
+        }
+
+        @keyframes revealImage {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .lyrics {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5rem;
+            color: #667eea;
+            margin: 20px 0;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .card {
+                padding: 25px;
+                border-radius: 20px;
+            }
+
+            .card-title {
+                font-size: 1.8rem;
+            }
+
+            .card-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .card-text {
+                font-size: 1rem;
+            }
+
+            .btn-interactive {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown-number {
+                font-size: 2rem;
+            }
+
+            .letter-text {
+                font-size: 1rem;
+            }
+
+            .final-image {
+                max-width: 100%;
+            }
+
+            .lyrics {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .card-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-heart {
+            font-size: 5rem;
+            animation: heartBeat 1s infinite;
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.2);
+            }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-heart">💖</div>
+        <div class="loading-text">Loading something special...</div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Particles Container -->
+    <div id="particles"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Card 1: Welcome -->
+        <div class="card active" id="card1">
+            <div class="card-content">
+                <h1 class="card-title">Hlw Phupho! 💕</h1>
+                <div class="card-image">
+                    <img src="https://gifdb.com/images/high/bubu-dudu-smiling-0rkqi6qkikk9tsk0.webp" alt="Bubu">
+                </div>
+                <p class="card-text">
+                    You are the most chawal person in GC... 🎁<br>
+                    But phr bhi i made a surprise For You <br>
+                    Are you ready to see it? 😊
+                </p>
+                <button class="btn-interactive" onclick="nextCard(2)">
+                    <span style="position: relative; z-index: 1;">Yes, Show Me! 💖</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Card 2: Quiz -->
+        <div class="card" id="card2">
+            <div class="card-content">
+                <h1 class="card-title">Quick Question! 🤔</h1>
+                <p class="card-text">What makes you the most Chawal person in my life?</p>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">Your beauty 🌸</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">Your smile 😊</div>
+                <div class="quiz-option" onclick="selectAnswer(this, true)">Your Bongiyan! 😁</div>
+                <div class="quiz-option" onclick="selectAnswer(this, false)">Your kindness 🥰</div>
+            </div>
+        </div>
+
+        <!-- Card 3: Memories -->
+        <div class="card" id="card3">
+            <div class="card-content">
+                <h1 class="card-title">Your Bongiyas 📸</h1>
+                <p class="card-text">Every moment with you is precious...</p>
+                <div class="memory-grid">
+                    <div class="memory-item">
+                        <div class="memory-icon">💬</div>
+                        <div class="memory-text">My Name Daddu rakhna</div>
+                    </div>
+                    <div class="memory-item">
+                        <div class="memory-icon">😊</div>
+                        <div class="memory-text">Give importance</div>
+                    </div>
+                    <div class="memory-item">
+                        <div class="memory-icon">💕</div>
+                        <div class="memory-text">Zero Attitude"</div>
+                    </div>
+                    <div class="memory-item">
+                        <div class="memory-icon">🌟</div>
+                        <div class="memory-text">Chawaliyan and Bongiyan</div>
+                    </div>
+                </div>
+                <button class="btn-interactive" onclick="nextCard(4)">
+                    <span style="position: relative; z-index: 1;">Continue 💝</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Card 4: Countdown -->
+        <div class="card" id="card4">
+            <div class="card-content">
+                <h1 class="card-title">Your new year ⏰</h1>
+                <p class="card-text">The timer is set from 12 am ...</p>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">0</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">0</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">0</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">0</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                <p class="card-text" style="font-size: 0.95rem; color: #666;">
+                    Since the day you are chawal 💕
+                </p>
+                <button class="btn-interactive" onclick="nextCard(5)">
+                    <span style="position: relative; z-index: 1;">Next 🌹</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Card 5: Love Letter -->
+        <div class="card" id="card5">
+            <div class="card-content">
+                <h1 class="card-title">A Letter For You 💌</h1>
+                <div class="letter-container">
+                    <p class="letter-text">
+                        Meri Chawal Phupho,<br><br>
+
+                        Jab se tum n mujhe gc m add kia h, Bongiya hi marti ho . 😁<br><br>
+
+                        Tumhari hansi bht khofnak hai... 😜<br>
+                        Tumhari baatein ik dm bongi hain... 🤣<br>
+                        Tum Toppers k haq khati ho ... 😅<br><br>
+
+                        Tum jaanti ho? Har subah tumhare message ka intezaar rehta hai.
+                        Har raat tumhare baare mein soch kar sota hoon . 🌙<br><br>
+
+                        khush hogai ,
+                        itni khush fahmi m n raho phupho,
+                        Uper wali do lines m n mazak m boli h,
+                        Bohti rah ni gai tuu. 💖<br><br>
+
+                        lkn jb bhi tumh need hoi meri,
+                        phupho t fr m nas jana,
+                        apne waste koi phuphar lab m inna vela nai h. 💞<br><br>
+
+                        Bongi phupho,
+                    </p>
+                    <div class="signature">Ahmii 🐻💖</div>
+                </div>
+                <button class="audioplay btn-interactive" onclick="nextCard(6)">
+                    <span style="position: relative; z-index: 1;">See The Surprise 🎁</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Card 6: Final Reveal -->
+        <div class="card" id="card6">
+            <div class="card-content final-reveal">
+                <h1 class="card-title">For You, My Love 💖</h1>
+                <img src="Phupho.jpeg" alt="Us" class="final-image">
+                <div class="lyrics">
+                    Tum Se Koi Bonga 💖<br>
+                    Koi Chawal 🥺 Nahi Hai<br><br>
+                    Kya Chawal 😍 Ho Tum<br>
+                    Khud Tumhe Maloom Nahi Hai 💋
+                </div>
+                <p class="card-text">
+                    Lkn mujhe maloom h phupho 💕<br>
+                    You are a Churail and Bongi! 🌟
+                </p>
+                <button class=" btnn btn-interactive" onclick="restart()">
+                    <span style="position: relative; z-index: 1;">Experience Again 🔄</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="myAudio" src="audio-editor-output.mp3"></audio>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hide');
+                createParticles();
+                startCountdown();
+            }, 2000);
+        });
+        let audioplay = document.querySelector(".audioplay");
+        let myAudio = document.getElementById("myAudio");
+
+        audioplay.addEventListener("click", () => {
+            myAudio.play();
+        });
+        // Create Floating Particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const emojis = ['💖', '💕', '💗', '💓', '💝', '✨', '🌟', '⭐', '💫'];
+
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particles.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 6000);
+            }, 300);
+        }
+
+        // Card Navigation
+        function nextCard(cardNumber) {
+            const currentCard = document.querySelector('.card.active');
+            const nextCard = document.getElementById('card' + cardNumber);
+
+            currentCard.classList.remove('active');
+            setTimeout(() => {
+                nextCard.classList.add('active');
+            }, 300);
+        }
+
+        // Quiz Answer
+        function selectAnswer(element, isCorrect) {
+            if (isCorrect) {
+                element.classList.add('correct');
+                setTimeout(() => {
+                    nextCard(3);
+                }, 1000);
+            } else {
+                element.style.animation = 'shake 0.5s ease';
+                setTimeout(() => {
+                    element.style.animation = '';
+                }, 500);
+            }
+        }
+
+        // Countdown Timer (customize the start date)
+        function startCountdown() {
+            const startDate = new Date('2025-07-12').getTime(); // Change this to your actual date
+
+            setInterval(() => {
+                // Aaj ki date ka midnight
+                const now = new Date();
+                const startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0); // today 12:00 AM
+
+                // Ab current time se difference
+                const distance = now.getTime() - startDate.getTime(); // milliseconds since midnight
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+
+
+            }, 1000);
+        }
+
+        // Restart
+        function restart() {
+            const allCards = document.querySelectorAll('.card');
+            allCards.forEach(card => card.classList.remove('active'));
+            document.getElementById('card1').classList.add('active');
+            window.location.reload();
+
+        }
+
+        // Shake Animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add touch feedback for mobile
+        document.querySelectorAll('.btn-interactive, .quiz-option, .memory-item').forEach(element => {
+            element.addEventListener('touchstart', function () {
+                this.style.transform = 'scale(0.95)';
+            });
+
+            element.addEventListener('touchend', function () {
+                this.style.transform = '';
+            });
+        });
+
+        // Prevent zoom on double tap (mobile)
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+        let btnn = document.querySelector(".btnn")
+        btnn.addEventListener("click", () => {
+            window.location.reload();
+        })
+    </script>
+</body>
+
+
+</html>
